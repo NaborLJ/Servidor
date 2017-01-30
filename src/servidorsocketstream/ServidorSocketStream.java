@@ -32,8 +32,8 @@ public class ServidorSocketStream extends Thread {
 
             InetSocketAddress addr = new InetSocketAddress("localhost", puerto);
             serverSocket.bind(addr);//Asociamos el servidor con la dirección que deseemos.
-            puerto++;
-            
+            puerto++;//Aumentamos en 1 el puerto para evitar que se repita siempre el mismo.
+            //Limitamos la creación de hilos hasta que la variable puerto sea 5557 para evitar que se quede en espera de más clientes.
             if(puerto<=5557){
             new  ServidorSocketStream().start();
             }
